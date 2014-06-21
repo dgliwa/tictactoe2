@@ -3,9 +3,9 @@ package com.thoughtworks.tictactoe2;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.PrintStream;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -22,7 +22,8 @@ public class TestMain {
         main.start();
 
         verify(game).printBoard();
-        verify(game).makePlayerMove("x");
+        verify(game,times(2)).makePlayerMove();
+
     }
 
 

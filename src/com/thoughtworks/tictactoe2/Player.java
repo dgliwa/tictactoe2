@@ -8,14 +8,20 @@ import java.io.IOException;
  */
 public class Player {
     private BufferedReader reader;
+    private String symbol;
 
-    public Player(BufferedReader reader) {
+    public Player(BufferedReader reader, String symbol) {
         this.reader = reader;
+        this.symbol = symbol;
     }
 
     public int makeMove() throws IOException {
         String moveString = reader.readLine();
         int move = Integer.parseInt(moveString);
         return move;
+    }
+
+    public String getSymbol() {
+        return symbol;
     }
 }
