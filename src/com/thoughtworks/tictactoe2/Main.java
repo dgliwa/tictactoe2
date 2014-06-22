@@ -18,9 +18,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Player player1 = new Player(reader, "x",1);
-        Player player2 = new Player(reader,"o",2);
         Board board = new Board(System.out);
+        Player player1 = new HumanPlayer(reader, "x",1);
+        Player player2 = new ComputerPlayer(board,"o",2);
         Game game = new Game(System.out, player1, player2, board);
         Main main = new Main(game);
         main.start();

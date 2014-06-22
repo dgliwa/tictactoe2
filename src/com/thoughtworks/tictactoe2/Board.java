@@ -59,10 +59,10 @@ public class Board {
     }
 
     public boolean isWin() {
-        if(isWinHorizontal(rowOne) || isWinHorizontal(rowTwo) || isWinHorizontal(rowThree)){
+        if(isWinRow(rowOne) || isWinRow(rowTwo) || isWinRow(rowThree)){
             return true;
         }
-        else if(isWinVertical(columnOne) || isWinVertical(columnTwo) || isWinVertical(columnThree)){
+        else if(isWinColumn(columnOne) || isWinColumn(columnTwo) || isWinColumn(columnThree)){
             return true;
         }
         else if(isWinDiagonal(diagonalOne) || isWinDiagonal(diagonalTwo)){
@@ -80,7 +80,7 @@ public class Board {
         }
     }
 
-    private boolean isWinVertical(int[] column) {
+    private boolean isWinColumn(int[] column) {
         if(board[column[0]].equals(board[column[1]]) && board[column[1]].equals(board[column[2]]) && !board[column[0]].equals(" ")){
             return true;
         }
@@ -90,7 +90,7 @@ public class Board {
 
     }
 
-    private boolean isWinHorizontal(int[] row) {
+    private boolean isWinRow(int[] row) {
         if(board[row[0]].equals(board[row[1]]) && board[row[1]].equals(board[row[2]]) && !board[row[0]].equals(" ")){
             return true;
         }

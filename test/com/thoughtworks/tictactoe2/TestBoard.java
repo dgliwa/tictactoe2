@@ -26,8 +26,8 @@ public class TestBoard {
     @Before
     public void setUp(){
         printStream = mock(PrintStream.class);
-        player1 = mock(Player.class);
-        player2 = mock(Player.class);
+        player1 = mock(HumanPlayer.class);
+        player2 = mock(HumanPlayer.class);
         board = new Board(printStream);
     }
 
@@ -44,13 +44,13 @@ public class TestBoard {
 
     @Test
     public void shouldDrawXOnBoardAfterPlayerOneInput() throws IOException {
-        board.addSymbol("x",1);
+        board.addSymbol("x", 1);
 
 
-        assertThat(board.toString(),is(" x |   |   \n"+
-                "------------\n"+
-                "   |   |   \n"+
-                "------------\n"+
+        assertThat(board.toString(),is(" x |   |   \n" +
+                "------------\n" +
+                "   |   |   \n" +
+                "------------\n" +
                 "   |   |   \n"));
     }
 
@@ -94,7 +94,7 @@ public class TestBoard {
         board.addSymbol(player1.getSymbol(),2);
         board.addSymbol(player1.getSymbol(),3);
 
-        assertThat(board.isWin(),is(true));
+        assertThat(board.isWin(), is(true));
 
 
     }
