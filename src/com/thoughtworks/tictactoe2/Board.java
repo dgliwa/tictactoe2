@@ -6,7 +6,14 @@ import java.io.PrintStream;
  * Created by derekgilwa on 6/22/14.
  */
 public class Board {
-    String[] board = {" "," "," "," "," "," "," "," "," "};
+    private String[] board = {" "," "," "," "," "," "," "," "," "};
+    private int[] rowOne = {0,1,2};
+    private int[] rowTwo = {3,4,5};
+    private int[] rowThree = {6,7,8};
+    private int[] columnOne = {0,3,6};
+    private int[] columnTwo = {1,4,7};
+    private int[] columnThree = {2,5,8};
+
     private PrintStream printStream;
 
 
@@ -47,5 +54,35 @@ public class Board {
                 "------------\n"+
                 " %s | %s | %s \n", board[0],board[1],board[2],board[3],board[4],board[5],board[6],board[7],board[8]);
         return boardString;
+    }
+
+    public boolean isWin() {
+        if(isWinHorizontal(rowOne) || isWinHorizontal(rowTwo) || isWinHorizontal(rowThree)){
+            return true;
+        }
+        else if(isWinVertical(columnOne) || isWinVertical(columnTwo) || isWinVertical(columnThree)){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isWinVertical(int[] column) {
+        if(board[column[0]].equals(board[column[1]]) && board[column[1]].equals(board[column[2]]) && !board[column[0]].equals(" ")){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    private boolean isWinHorizontal(int[] row) {
+        if(board[row[0]].equals(board[row[1]]) && board[row[1]].equals(board[row[2]]) && !board[row[0]].equals(" ")){
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 }

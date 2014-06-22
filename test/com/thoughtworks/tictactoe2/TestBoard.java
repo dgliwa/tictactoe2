@@ -60,4 +60,31 @@ public class TestBoard {
 
         verify(printStream).println("Game is a draw");
     }
+
+    @Test
+    public void shouldWinWhenThreeInARowHorizontally(){
+        when(player1.getSymbol()).thenReturn("x");
+
+        board.addSymbol(player1.getSymbol(),1);
+        board.addSymbol(player1.getSymbol(),2);
+        board.addSymbol(player1.getSymbol(),3);
+
+        assertThat(board.isWin(),is(true));
+
+
+    }
+
+
+    @Test
+    public void shouldWinWhenThreeInARowVertically(){
+        when(player1.getSymbol()).thenReturn("x");
+
+        board.addSymbol(player1.getSymbol(),1);
+        board.addSymbol(player1.getSymbol(),4);
+        board.addSymbol(player1.getSymbol(),7);
+
+        assertThat(board.isWin(),is(true));
+
+
+    }
 }
