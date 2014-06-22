@@ -4,9 +4,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by derekgilwa on 6/21/14.
@@ -18,11 +16,10 @@ public class TestMain {
 
         Game game = mock(Game.class);
         Main main = new Main(game);
-
+        when(game.isDraw()).thenReturn(true);
         main.start();
 
         verify(game).printBoard();
-        verify(game,times(2)).makePlayerMove();
 
     }
 

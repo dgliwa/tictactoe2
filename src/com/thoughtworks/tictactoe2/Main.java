@@ -20,15 +20,20 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Player player1 = new Player(reader, "x");
         Player player2 = new Player(reader,"o");
-        Game game = new Game(System.out, player1, player2);
+        Board board = new Board(System.out);
+        Game game = new Game(System.out, player1, player2, board);
         Main main = new Main(game);
         main.start();
     }
 
     public void start() throws IOException {
         game.printBoard();
-        game.makePlayerMove();
-        game.makePlayerMove();
+
+        while(!game.isDraw()){
+            game.makePlayerMove();
+            game.switchCurrentPlayer();
+            game.printBoard();
+        }
     }
 
 }
