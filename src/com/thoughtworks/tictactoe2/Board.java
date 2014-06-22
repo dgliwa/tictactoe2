@@ -38,6 +38,20 @@ public class Board {
     }
 
 
+    public boolean isWin() {
+        if(isThreeInARow(rowOne) || isThreeInARow(rowTwo) || isThreeInARow(rowThree)){
+            return true;
+        }
+        else if(isThreeInARow(columnOne) || isThreeInARow(columnTwo) || isThreeInARow(columnThree)){
+            return true;
+        }
+        else if(isThreeInARow(diagonalOne) || isThreeInARow(diagonalTwo)){
+            return true;
+        }
+        return false;
+    }
+
+
     public boolean isBoardFull(){
         for (int i = 1; i <= 9; i++) {
             if(!isSpaceTaken(i)){
@@ -58,46 +72,15 @@ public class Board {
         return boardString;
     }
 
-    public boolean isWin() {
-        if(isWinRow(rowOne) || isWinRow(rowTwo) || isWinRow(rowThree)){
-            return true;
-        }
-        else if(isWinColumn(columnOne) || isWinColumn(columnTwo) || isWinColumn(columnThree)){
-            return true;
-        }
-        else if(isWinDiagonal(diagonalOne) || isWinDiagonal(diagonalTwo)){
-            return true;
-        }
-        return false;
+
+
+    private boolean isThreeInARow(int[] set) {
+        boolean areTheyEqual = board[set[0]].equals(board[set[1]]) && board[set[1]].equals(board[set[2]]);
+        boolean isOneASpace = board[set[0]].equals(" ");
+        return areTheyEqual && !isOneASpace;
     }
 
-    private boolean isWinDiagonal(int[] diagonal) {
-        if(board[diagonal[0]].equals(board[diagonal[1]]) && board[diagonal[1]].equals(board[diagonal[2]]) && !board[diagonal[0]].equals(" ")){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
 
-    private boolean isWinColumn(int[] column) {
-        if(board[column[0]].equals(board[column[1]]) && board[column[1]].equals(board[column[2]]) && !board[column[0]].equals(" ")){
-            return true;
-        }
-        else{
-            return false;
-        }
-
-    }
-
-    private boolean isWinRow(int[] row) {
-        if(board[row[0]].equals(board[row[1]]) && board[row[1]].equals(board[row[2]]) && !board[row[0]].equals(" ")){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
 
 
 }
