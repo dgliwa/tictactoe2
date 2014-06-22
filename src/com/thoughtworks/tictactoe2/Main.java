@@ -18,8 +18,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Player player1 = new Player(reader, "x");
-        Player player2 = new Player(reader,"o");
+        Player player1 = new Player(reader, "x",1);
+        Player player2 = new Player(reader,"o",2);
         Board board = new Board(System.out);
         Game game = new Game(System.out, player1, player2, board);
         Main main = new Main(game);
@@ -29,10 +29,14 @@ public class Main {
     public void start() throws IOException {
         game.printBoard();
 
-        while(!game.isDraw()){
+        while(true){
             game.makePlayerMove();
-            game.switchCurrentPlayer();
             game.printBoard();
+            if(game.isOver()){
+               break;
+            }
+            game.switchCurrentPlayer();
+
         }
     }
 

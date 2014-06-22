@@ -13,6 +13,8 @@ public class Board {
     private int[] columnOne = {0,3,6};
     private int[] columnTwo = {1,4,7};
     private int[] columnThree = {2,5,8};
+    private int[] diagonalOne = {0,4,8};
+    private int[] diagonalTwo = {2,4,6};
 
     private PrintStream printStream;
 
@@ -63,7 +65,19 @@ public class Board {
         else if(isWinVertical(columnOne) || isWinVertical(columnTwo) || isWinVertical(columnThree)){
             return true;
         }
+        else if(isWinDiagonal(diagonalOne) || isWinDiagonal(diagonalTwo)){
+            return true;
+        }
         return false;
+    }
+
+    private boolean isWinDiagonal(int[] diagonal) {
+        if(board[diagonal[0]].equals(board[diagonal[1]]) && board[diagonal[1]].equals(board[diagonal[2]]) && !board[diagonal[0]].equals(" ")){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     private boolean isWinVertical(int[] column) {
@@ -83,6 +97,7 @@ public class Board {
         else{
             return false;
         }
-
     }
+
+
 }

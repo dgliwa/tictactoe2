@@ -43,6 +43,31 @@ public class TestBoard {
 
 
     @Test
+    public void shouldDrawXOnBoardAfterPlayerOneInput() throws IOException {
+        board.addSymbol("x",1);
+
+
+        assertThat(board.toString(),is(" x |   |   \n"+
+                "------------\n"+
+                "   |   |   \n"+
+                "------------\n"+
+                "   |   |   \n"));
+    }
+
+    @Test
+    public void shouldDrawOOnBoardAfterPlayerTwoInput() throws IOException {
+        board.addSymbol("x",1);
+        board.addSymbol("o",2);
+
+        assertThat(board.toString(),is(" x | o |   \n"+
+                "------------\n"+
+                "   |   |   \n"+
+                "------------\n"+
+                "   |   |   \n"));
+    }
+
+
+    @Test
     public void shouldSayGameIsOverWhenBoardIsFull() throws IOException {
         when(player1.getSymbol()).thenReturn("x");
 
@@ -84,7 +109,16 @@ public class TestBoard {
         board.addSymbol(player1.getSymbol(),7);
 
         assertThat(board.isWin(),is(true));
+    }
 
+    @Test
+    public void shouldWinWhenThreeInARowDiagonally(){
+        when(player1.getSymbol()).thenReturn("x");
 
+        board.addSymbol(player1.getSymbol(),1);
+        board.addSymbol(player1.getSymbol(),5);
+        board.addSymbol(player1.getSymbol(),9);
+
+        assertThat(board.isWin(),is(true));
     }
 }

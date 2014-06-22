@@ -18,7 +18,7 @@ public class TestPlayer {
     @Test
     public void shouldGetMoveNumberOnPlayerInput() throws IOException {
         BufferedReader reader = mock(BufferedReader.class);
-        Player player = new Player(reader, "x");
+        Player player = new Player(reader, "x",1);
         when(reader.readLine()).thenReturn("4");
         int move = player.makeMove();
         assertThat(move, is(4));

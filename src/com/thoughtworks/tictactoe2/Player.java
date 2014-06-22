@@ -9,10 +9,12 @@ import java.io.IOException;
 public class Player {
     private BufferedReader reader;
     private String symbol;
+    private int playerNumber;
 
-    public Player(BufferedReader reader, String symbol) {
+    public Player(BufferedReader reader, String symbol, int playerNumber) {
         this.reader = reader;
         this.symbol = symbol;
+        this.playerNumber = playerNumber;
     }
 
     public int makeMove() throws IOException {
@@ -23,5 +25,9 @@ public class Player {
 
     public String getSymbol() {
         return symbol;
+    }
+
+    public String getNumber() {
+        return Integer.toString(playerNumber);
     }
 }

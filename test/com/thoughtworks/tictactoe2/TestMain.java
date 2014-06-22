@@ -16,11 +16,11 @@ public class TestMain {
 
         Game game = mock(Game.class);
         Main main = new Main(game);
-        when(game.isDraw()).thenReturn(true);
+        when(game.isOver()).thenReturn(true);
         main.start();
 
-        verify(game).printBoard();
-
+        verify(game,atLeastOnce()).printBoard();
+        verify(game).makePlayerMove();
     }
 
 
